@@ -16,5 +16,4 @@ class Contact
   def add
     @@contacts << self
   end
-
 end
