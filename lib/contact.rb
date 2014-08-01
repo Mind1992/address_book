@@ -16,4 +16,8 @@ class Contact
   def add
     @@contacts << self
   end
+
+  def Contact.clear
+    @@contacts = []
+  end
 end

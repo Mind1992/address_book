@@ -2,6 +2,10 @@ require 'rspec'
 require 'contact'
 
 describe Contact do
+  before do 
+    Contact.clear
+  end
+  
   it 'lets you read name, phone number, email, mailing address' do
     test_contact = Contact.new('Mark', '(888) 9086-171', 'mark1971@gmail.com', '1250 SW 43th Ave')
     expect(test_contact.name).to eq 'Mark'
@@ -23,6 +27,11 @@ end
   end
 end
 
-
-
+describe '.clear' do 
+  it 'returns an empty dictionary' do 
+    Contact.new('Mark', '(888) 9086-171', 'mark1971@gmail.com', '1250 SW 43th Ave').add
+    Contact.clear
+    expect(Contact.all).to eq []
+  end
+end
 
