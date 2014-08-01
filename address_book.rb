@@ -23,6 +23,8 @@ def add_contact
  print "Add mailing address: "; address = gets.chomp
  new_contact = Contact.new(name,phone,email,address)
  new_contact.add
- puts "New contact for #{new_contact.name} added"
+ puts "\n\n"
+ puts "New contact for name *#{new_contact.name}* added"
+ puts "\n\n"
 end
 main_menu
