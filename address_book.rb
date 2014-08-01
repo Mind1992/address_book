@@ -34,8 +34,10 @@ end
 def list_contacts
 	puts "\n\n"
 	puts "***Contacts***"
+	i = 1
 	Contact.all.each do |contact|
-		puts contact.name 
+		puts "#{i}. " + contact.name 
+		i += 1
 	end 
 	puts "\n\n"
 end
