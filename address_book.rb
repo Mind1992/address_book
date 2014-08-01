@@ -4,10 +4,13 @@ def main_menu
 	loop do 
 		puts "***Address Book***"
 		puts "1: add contact"
+		puts "2: list contacts' names "
 		puts "9: exit"
 		user_input = gets.chomp
 		if user_input == "1"
 			add_contact
+		elsif user_input == "2"
+			list_contacts
 		elsif user_input == "9"
 			exit
 		else 
@@ -26,5 +29,14 @@ def add_contact
  puts "\n\n"
  puts "New contact for name *#{new_contact.name}* added"
  puts "\n\n"
+end
+
+def list_contacts
+	puts "\n\n"
+	puts "***Contacts***"
+	Contact.all.each do |contact|
+		puts contact.name 
+	end 
+	puts "\n\n"
 end
 main_menu
