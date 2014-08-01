@@ -5,7 +5,7 @@ describe Contact do
   before do 
     Contact.clear
   end
-  
+
   it 'lets you read name, phone number, email, mailing address' do
     test_contact = Contact.new('Mark', '(888) 9086-171', 'mark1971@gmail.com', '1250 SW 43th Ave')
     expect(test_contact.name).to eq 'Mark'
@@ -25,7 +25,6 @@ end
     test_contact.add
     expect(Contact.all).to eq [test_contact]
   end
-end
 
 describe '.clear' do 
   it 'returns an empty dictionary' do 
@@ -35,3 +34,9 @@ describe '.clear' do
   end
 end
 
+  # it 'shows all information about choosen contact' do 
+  #   test_contact = Contact.new('Mark', '(888) 9086-171', 'mark1971@gmail.com', '1250 SW 43th Ave')
+  #   test_contact.add
+  #   expect(test_contact.show_info).to eq ['Mark', '(888) 9086-171', 'mark1971@gmail.com', '1250 SW 43th Ave'] 
+  # end
+end

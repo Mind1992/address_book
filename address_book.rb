@@ -4,7 +4,7 @@ def main_menu
 	loop do 
 		puts "***Address Book***"
 		puts "1: add contact"
-		puts "2: list contacts' names "
+		puts "2: list contacts' names"
 		puts "9: exit"
 		user_input = gets.chomp
 		if user_input == "1"
@@ -39,6 +39,23 @@ def list_contacts
 		puts "#{i}. " + contact.name 
 		i += 1
 	end 
+	puts "\n\n"
+	puts "1: show contact details"
+	user_input = gets.chomp
+	if user_input == "1"
+		show_details
+	end
+end
+
+def show_details
+	puts "Select the number of the contact"
+ 	user_input = gets.chomp.to_i
+ 	selected_contact = Contact.all[user_input - 1]
+	puts "\n\n"
+	puts "Contact details for *#{selected_contact.name}*: "
+	puts "Phone number: #{selected_contact.phone}"
+	puts "Email: #{selected_contact.email}"
+	puts "Mailing address: #{selected_contact.address}"
 	puts "\n\n"
 end
 main_menu
