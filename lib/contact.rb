@@ -1,12 +1,12 @@
 class Contact
-  attr_reader :name, :phone, :email, :address
+  attr_reader :name, :phones, :emails, :addresses
   @@contacts = []
 
-  def initialize(name, phone, email, address)
+  def initialize(name)
     @name = name
-    @phone = phone
-    @email = email
-    @address = address
+    @phones = []
+    @emails = []
+    @addresses = []
   end
 
   def Contact.all
