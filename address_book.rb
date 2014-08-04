@@ -77,7 +77,7 @@ def show_details
  	selected_contact = Contact.all[user_input - 1]
 	puts "\n\n"
 	puts "Contact details for *#{selected_contact.name}*: "
-	puts "Phone numbers: #{selected_contact.phones}"
+	puts "Phone numbers: #{selected_contact.show_phones}"
 	puts "Emails: #{selected_contact.emails}"
 	puts "Mailing addresses: #{selected_contact.addresses}"
 	puts "\n\n"
@@ -91,7 +91,7 @@ def add_phone
 	new_phone = Phone.new(phone)
 	selected_contact.add_phone(new_phone)
 	puts "\n\n"
-	puts "Phone numbers: #{selected_contact.phones}"
+	puts "Phone numbers: #{selected_contact.show_phones}"
 end
 
 def add_email

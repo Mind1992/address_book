@@ -35,9 +35,11 @@ class Contact
   end
 
   def show_phones
+    array = []
     @phones.each do |phone|
-      puts phone
+      array << phone.phone
     end
+   array
   end
 
 end
