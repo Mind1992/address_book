@@ -42,6 +42,21 @@ class Contact
    array
   end
 
+  def show_emails
+    array = []
+    @emails.each do |email|
+      array << email.email
+    end
+   array
+  end
+
+  def show_addresses
+    array = []
+    @addresses.each do |address|
+      array << address.address
+    end
+   array
+  end
 end
 
 

@@ -56,7 +56,7 @@ end
 
 describe Address do
 
-  it 'lets you read phone' do
+  it 'lets you read address' do
     test_address = Address.new('1250 SW 43th Ave')
     expect(test_address.address).to eq '1250 SW 43th Ave'
   end

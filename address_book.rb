@@ -36,11 +36,6 @@ def add_contact
  new_contact.add_phone(new_phone)
  new_contact.add
 
-
- # new_contact.phones << new_phone
- # new_contact.phones << new_phone
- # new_contact.phones << new_phone
- # new_contact.phones << new_phone
  puts "\n\n"
  puts "New contact for name *#{new_contact.name}* added"
  puts "\n\n"
@@ -78,8 +73,8 @@ def show_details
 	puts "\n\n"
 	puts "Contact details for *#{selected_contact.name}*: "
 	puts "Phone numbers: #{selected_contact.show_phones}"
-	puts "Emails: #{selected_contact.emails}"
-	puts "Mailing addresses: #{selected_contact.addresses}"
+	puts "Emails: #{selected_contact.show_emails}"
+	puts "Mailing addresses: #{selected_contact.show_addresses}"
 	puts "\n\n"
 end
 
@@ -91,7 +86,7 @@ def add_phone
 	new_phone = Phone.new(phone)
 	selected_contact.add_phone(new_phone)
 	puts "\n\n"
-	puts "Phone numbers: #{selected_contact.show_phones}"
+	
 end
 
 def add_email
@@ -102,7 +97,7 @@ def add_email
 	new_email = Email.new(email)
 	selected_contact.add_email(new_email)
 	puts "\n\n"
-	puts "Emails: #{selected_contact.emails}"
+	
 end
 
 def add_address
@@ -113,7 +108,6 @@ def add_address
 	new_address = Address.new(address)
 	selected_contact.add_address(new_address)
 	puts "\n\n"
-	puts "Addresses: #{selected_contact.addresses}"
 end
 
 main_menu
