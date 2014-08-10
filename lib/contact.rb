@@ -57,6 +57,10 @@ class Contact
     end
    array
   end
+
+  def update(old_phone, new_phone)
+    old_phone = new_phone
+  end
 end
 
 
