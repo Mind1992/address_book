@@ -42,6 +42,14 @@ class Contact
       end
     end
   end
+
+  def update_email(old_email, new_email)
+    self.emails.select! do |email| 
+      if email.email == old_email
+        email.email = new_email
+      end
+    end
+  end
 end
 
 

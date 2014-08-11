@@ -62,6 +62,15 @@ describe Email do
     test_email = Email.new('mark1971@gmail.com')
     expect(test_email.email).to eq 'mark1971@gmail.com'
   end
+
+  it 'lets you update emails' do 
+    test_contact = Contact.new('Mark')
+    test_email = Email.new('(888) 9086-171')
+    test_contact.add_email(test_email)
+    test_contact.add
+    test_contact.update_email('(888) 9086-171', '(503) 5482-321')
+    expect(test_contact.emails.first.email).to eq '(503) 5482-321'
+  end
 end
 
 describe Address do
