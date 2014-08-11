@@ -2,6 +2,7 @@ require './lib/contact'
 require './lib/phone'
 require './lib/email'
 require './lib/address'
+require 'pry'
 
 def main_menu
 	loop do
@@ -10,14 +11,11 @@ def main_menu
 		puts "2: list contacts' names"
 		puts "9: exit"
 		user_input = gets.chomp
-		if user_input == "1"
-			add_contact
-		elsif user_input == "2"
-			list_contacts
-		elsif user_input == "9"
-			exit
-		else
-			puts "This is the wrong command"
+		case user_input
+		when "1" then add_contact
+		when "2" then list_contacts
+		when "9" then exit
+		else puts "This is the wrong command"
 		end
 	end
 end
@@ -54,15 +52,15 @@ def list_contacts
 	puts "2: add phone number"
 	puts "3: add email"
 	puts "4: add address"
+	puts "5: update phone number"
 	user_input = gets.chomp
-	if user_input == "1"
-		show_details
-	elsif user_input == "2"
-		add_phone
-	elsif user_input == "3"
-		add_email
-	elsif user_input == "4"
-		add_address
+	case user_input
+	when "1" then show_details
+	when "2" then add_phone
+	when "3" then add_email
+	when "4" then add_address
+	when "5" then update_phone
+	else puts "This is the wrong command"
 	end
 end
 
@@ -72,9 +70,15 @@ def show_details
  	selected_contact = Contact.all[user_input - 1]
 	puts "\n\n"
 	puts "Contact details for *#{selected_contact.name}*: "
-	puts "Phone numbers: #{selected_contact.show_phones}"
-	puts "Emails: #{selected_contact.show_emails}"
-	puts "Mailing addresses: #{selected_contact.show_addresses}"
+	puts
+	puts "Phone numbers: " 
+	selected_contact.phones.each { |phone| puts phone.phone }
+	puts 
+	puts "Emails: " 
+	selected_contact.emails.each { |email| puts email.email }
+	puts
+	puts "Mailing addresses: " 
+	selected_contact.addresses.each { |address| puts address.address}
 	puts "\n\n"
 end
 
@@ -109,5 +113,21 @@ def add_address
 	selected_contact.add_address(new_address)
 	puts "\n\n"
 end
+
+def update_phone
+	puts "Select the number of the contact"
+ 	user_input = gets.chomp.to_i
+ 	selected_contact = Contact.all[user_input - 1]
+ 	puts "Select a phone number: "
+ 	selected_contact.phones.each { |phone| puts phone.phone }
+ 	user_input = gets.chomp.to_i
+ 	selected_phone = selected_contact.phones[user_input - 1]
+ 	puts "Type a new phone number: "
+ 	new_number = gets.chomp 
+ 	selected_contact.update_phone(selected_phone.phone, new_number)
+ 	selected_contact.phones
+ 	
+end
+
 
 main_menu

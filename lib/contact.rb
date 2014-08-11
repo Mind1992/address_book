@@ -1,3 +1,4 @@
+require 'pry'
 class Contact
   attr_accessor :name, :phones, :emails, :addresses
   @@contacts = []
@@ -33,33 +34,13 @@ class Contact
   def add_phone(phone)
     @phones << phone
   end
-
-  def show_phones
-    array = []
-    @phones.each do |phone|
-      array << phone.phone
+  
+  def update_phone(old_phone, new_phone)
+    self.phones.select! do |phone| 
+      if phone.phone == old_phone
+        phone.phone = new_phone
+      end
     end
-   array
-  end
-
-  def show_emails
-    array = []
-    @emails.each do |email|
-      array << email.email
-    end
-   array
-  end
-
-  def show_addresses
-    array = []
-    @addresses.each do |address|
-      array << address.address
-    end
-   array
-  end
-
-  def update(old_phone, new_phone)
-    old_phone = new_phone
   end
 end
 

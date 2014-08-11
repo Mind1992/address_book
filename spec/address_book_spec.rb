@@ -4,6 +4,7 @@ require 'phone'
 require 'email'
 require 'address'
 
+
 describe Contact do
   before do
     Contact.clear
@@ -50,7 +51,8 @@ describe Phone do
     test_phone = Phone.new('(888) 9086-171')
     test_contact.add_phone(test_phone)
     test_contact.add
-    expect(test_contact.update('(888) 9086-171', '(503) 5482-321')).to eq '(503) 5482-321'
+    test_contact.update_phone('(888) 9086-171', '(503) 5482-321')
+    expect(test_contact.phones.first.phone).to eq '(503) 5482-321'
   end
 end
 
