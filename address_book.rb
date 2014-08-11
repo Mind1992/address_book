@@ -54,6 +54,7 @@ def list_contacts
 	puts "4: add address"
 	puts "5: update phone number"
 	puts "6: update email"
+	puts "7: update address"
 	user_input = gets.chomp
 	case user_input
 	when "1" then show_details
@@ -62,6 +63,7 @@ def list_contacts
 	when "4" then add_address
 	when "5" then update_phone
 	when "6" then update_email
+	when "7" then update_address
 	else puts "This is the wrong command"
 	end
 end
@@ -142,6 +144,20 @@ def update_email
  	new_email = gets.chomp 
  	selected_contact.update_email(selected_email.email, new_email)
  	selected_contact.emails
+end
+
+def update_address
+	puts "Select the number of the contact"
+ 	user_input = gets.chomp.to_i
+ 	selected_contact = Contact.all[user_input - 1]
+ 	puts "Select an address: "
+ 	selected_contact.addresses.each { |address| puts address.address }
+ 	user_input = gets.chomp.to_i
+ 	selected_address = selected_contact.addresses[user_input - 1]
+ 	puts "Type a new address: "
+ 	new_address = gets.chomp 
+ 	selected_contact.update_address(selected_address.address, new_address)
+ 	selected_contact.addresses
 end
 
 

@@ -50,6 +50,14 @@ class Contact
       end
     end
   end
+
+  def update_address(old_address, new_address)
+    self.addresses.select! do |address| 
+      if address.address == old_address
+        address.address = new_address
+      end
+    end
+  end
 end
 
 

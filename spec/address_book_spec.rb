@@ -65,11 +65,11 @@ describe Email do
 
   it 'lets you update emails' do 
     test_contact = Contact.new('Mark')
-    test_email = Email.new('(888) 9086-171')
+    test_email = Email.new('serg@gamil.com')
     test_contact.add_email(test_email)
     test_contact.add
-    test_contact.update_email('(888) 9086-171', '(503) 5482-321')
-    expect(test_contact.emails.first.email).to eq '(503) 5482-321'
+    test_contact.update_email('serg@gamil.com', 'serg@gamil92.com')
+    expect(test_contact.emails.first.email).to eq 'serg@gamil92.com'
   end
 end
 
@@ -78,5 +78,14 @@ describe Address do
   it 'lets you read address' do
     test_address = Address.new('1250 SW 43th Ave')
     expect(test_address.address).to eq '1250 SW 43th Ave'
+  end
+
+  it 'lets you update addresses' do 
+    test_contact = Contact.new('Mark')
+    test_address = Address.new('1250 SW 43th Ave')
+    test_contact.add_address(test_address)
+    test_contact.add
+    test_contact.update_address('1250 SW 43th Ave', '2450 SW 22th Ave')
+    expect(test_contact.addresses.first.address).to eq '2450 SW 22th Ave'
   end
 end
