@@ -33,4 +33,11 @@ end
       expect(Contact.all).to eq []
     end
   end
+
+  it 'lets you delete contact' do 
+  	test_contact = Contact.new('Mark')
+    test_contact.add
+    Contact.delete_contact(test_contact.name)
+    expect(Contact.all).to eq []
+  end
 end

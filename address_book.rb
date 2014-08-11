@@ -9,11 +9,13 @@ def main_menu
 		puts "***Address Book***"
 		puts "1: add contact"
 		puts "2: list contacts' names"
+		puts "8: delete contact"
 		puts "9: exit"
 		user_input = gets.chomp
 		case user_input
 		when "1" then add_contact
 		when "2" then list_contacts
+		when "8" then delete_contact
 		when "9" then exit
 		else puts "This is the wrong command"
 		end
@@ -160,5 +162,17 @@ def update_address
  	selected_contact.addresses
 end
 
+def delete_contact
+	puts "Select the number of the contact: "
+	counter = 1
+	Contact.all.each do |contact| 
+		puts "#{counter.to_s}. #{contact.name}"
+		counter += 1
+	end
+ 	user_input = gets.chomp.to_i
+ 	selected_contact = Contact.all[user_input - 1]
+ 	Contact.delete_contact(selected_contact.name)
+
+end
 
 main_menu

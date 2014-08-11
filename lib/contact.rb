@@ -58,6 +58,14 @@ class Contact
       end
     end
   end
+
+  def self.delete_contact(inputted_name)
+    self.all.select! do |contact|
+      if contact.name == inputted_name
+        self.all.delete(contact)
+      end
+    end
+  end
 end
 
 
