@@ -9,14 +9,28 @@ def main_menu
 		puts "***Address Book***"
 		puts "1: add contact"
 		puts "2: list contacts' names"
-		puts "8: delete contact"
-		puts "9: exit"
+		puts "3: show contact details"
+		puts "4: add phone number"
+		puts "5: add email"
+		puts "6: add address"
+		puts "7: update phone number"
+		puts "8: update email"
+		puts "9: update address"
+		puts "10: delete contact"
+		puts "11: exit"
 		user_input = gets.chomp
 		case user_input
 		when "1" then add_contact
 		when "2" then list_contacts
-		when "8" then delete_contact
-		when "9" then exit
+		when "3" then show_details
+		when "4" then add_phone
+		when "5" then add_email
+		when "6" then add_address
+		when "7" then update_phone
+		when "8" then update_email
+		when "9" then update_address
+		when "10" then delete_contact
+		when "11" then exit
 		else puts "This is the wrong command"
 		end
 	end
@@ -41,7 +55,8 @@ def add_contact
  puts "\n\n"
 end
 
-def list_contacts
+
+def list
 	puts "\n\n"
 	puts "***Contacts***"
 	i = 1
@@ -49,6 +64,11 @@ def list_contacts
 		puts "#{i}. " + contact.name
 		i += 1
 	end
+	puts "\n\n"
+end
+
+def list_contacts
+	list
 	puts "\n\n"
 	puts "1: show contact details"
 	puts "2: add phone number"
@@ -71,6 +91,7 @@ def list_contacts
 end
 
 def show_details
+	list
 	puts "Select the number of the contact"
  	user_input = gets.chomp.to_i
  	selected_contact = Contact.all[user_input - 1]
@@ -89,6 +110,7 @@ def show_details
 end
 
 def add_phone
+	list
 	puts "Select the number of the contact"
  	user_input = gets.chomp.to_i
  	selected_contact = Contact.all[user_input - 1]
@@ -100,6 +122,7 @@ def add_phone
 end
 
 def add_email
+	list
 	puts "Select the number of the contact"
  	user_input = gets.chomp.to_i
  	selected_contact = Contact.all[user_input - 1]
@@ -111,6 +134,7 @@ def add_email
 end
 
 def add_address
+	list
 	puts "Select the number of the contact"
  	user_input = gets.chomp.to_i
  	selected_contact = Contact.all[user_input - 1]
@@ -121,11 +145,16 @@ def add_address
 end
 
 def update_phone
+	list
 	puts "Select the number of the contact"
  	user_input = gets.chomp.to_i
  	selected_contact = Contact.all[user_input - 1]
  	puts "Select a phone number: "
- 	selected_contact.phones.each { |phone| puts phone.phone }
+ 	counter = 1 
+ 	selected_contact.phones.each do |phone| 
+ 		puts "#{counter.to_s}. #{phone.phone}" 
+ 		counter += 1 
+ 	end
  	user_input = gets.chomp.to_i
  	selected_phone = selected_contact.phones[user_input - 1]
  	puts "Type a new phone number: "
@@ -135,11 +164,16 @@ def update_phone
 end
 
 def update_email
+	list
 	puts "Select the number of the contact"
  	user_input = gets.chomp.to_i
  	selected_contact = Contact.all[user_input - 1]
  	puts "Select an email: "
- 	selected_contact.emails.each { |email| puts email.email }
+ 	counter = 1
+ 	selected_contact.emails.each do |email| 
+ 		puts "#{counter.to_s}. #{email.email}"
+ 		counter += 1
+ 	end
  	user_input = gets.chomp.to_i
  	selected_email = selected_contact.emails[user_input - 1]
  	puts "Type a new email number: "
@@ -149,11 +183,16 @@ def update_email
 end
 
 def update_address
+	list
 	puts "Select the number of the contact"
  	user_input = gets.chomp.to_i
  	selected_contact = Contact.all[user_input - 1]
  	puts "Select an address: "
- 	selected_contact.addresses.each { |address| puts address.address }
+ 	counter = 1
+ 	selected_contact.addresses.each do |address| 
+ 		puts "#{counter.to_s}. #{address.address}"
+ 		counter += 1
+ 	end
  	user_input = gets.chomp.to_i
  	selected_address = selected_contact.addresses[user_input - 1]
  	puts "Type a new address: "
@@ -163,6 +202,7 @@ def update_address
 end
 
 def delete_contact
+	list
 	puts "Select the number of the contact: "
 	counter = 1
 	Contact.all.each do |contact| 
