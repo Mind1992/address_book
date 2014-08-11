@@ -2,7 +2,6 @@ require './lib/contact'
 require './lib/phone'
 require './lib/email'
 require './lib/address'
-require 'pry'
 
 def main_menu
 	loop do
@@ -49,7 +48,6 @@ def add_contact
  new_contact.add_address(new_address)
  new_contact.add_phone(new_phone)
  new_contact.add
-
  puts "\n\n"
  puts "New contact for name *#{new_contact.name}* added"
  puts "\n\n"
@@ -152,8 +150,8 @@ def update_phone
  	puts "Select a phone number: "
  	counter = 1 
  	selected_contact.phones.each do |phone| 
- 		puts "#{counter.to_s}. #{phone.phone}" 
- 		counter += 1 
+ 	puts "#{counter.to_s}. #{phone.phone}" 
+ 	counter += 1 
  	end
  	user_input = gets.chomp.to_i
  	selected_phone = selected_contact.phones[user_input - 1]
